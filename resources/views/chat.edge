@@ -1,0 +1,100 @@
+
+{{-- ./resources/views/chat.egde --}}
+@layout('layout.main')
+@section('title') 
+  Chat 
+@endsection
+@section('content')
+  <input type="hidden" name="user_id" id="user_id" value="{{ auth.user.id }}">
+  <div class="row h-100">
+    <div class="col-4 chat-list">
+      <div class="head">
+        <h5 class="vertical-align text-center">Chatly</h5>
+      </div>
+      <div id="rooms-list" class="list-group">
+        <p class="text-muted text-center">Loading chat rooms...</p>
+      </div>
+      <div class="btns row">
+        <div class="col-sm-6">
+          <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#createRoomModal">Create Room</button>           
+        </div>
+        <div class="col-sm-6">
+          <form action="/logout" method="post">
+            {{ csrfField() }}
+            <button class="btn btn-danger" type="submit">Logout</button>              
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-8 chat-details">
+      <div class="head">
+        <p id="group-name" class="align-middle">Chat</p>
+      </div>
+      <div class="chat">
+        <div id="messages-list">
+          
+        </div>
+        <div class="hide input-group mb-3" id="message-input-group">
+          <input id="messageInputText" type="text" class="form-control" placeholder="What do you want to say?" aria-label="What do you want to say?" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-primary" id="sendMessageBtn" type="button">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Create Room Modal -->
+  <div class="modal fade" id="createRoomModal" tabindex="-1" role="dialog" aria-labelledby="createRoomModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Create Room</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="" method="post">
+            <div class="form-group">
+              <label for="roomNameInput">Room name</label>
+              <input type="email" class="form-control" id="roomNameInput" aria-describedby="emailHelp" placeholder="Enter room name">
+              <small id="emailHelp" class="form-text text-muted">Should not be longer than 60 characters.</small>
+            </div>
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" id="isPrivateCheck">
+              <label class="form-check-label" for="isPrivateCheck">Private Room?</label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="createNewRoomBtn" type="button" class="btn btn-primary">Create Room</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Join Room Modal -->
+  <div class="modal fade" id="joinRoomModal" tabindex="-1" role="dialog" aria-labelledby="joinRoomModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Join Room</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You are currenty NOT a member of this room, join?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="joinRoomBtn" type="button" class="btn btn-primary">Join Room</button>
+        </div>
+      </div>
+    </div>
+  </div>
+@endsection
+@section('scripts')
+  <script src="https://unpkg.com/pusher-chatkit-client"></script>
+  {{ script('chat') }}
+@endsection

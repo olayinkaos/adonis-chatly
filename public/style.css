@@ -1,0 +1,61 @@
+
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300");
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+.chat-list {
+  border-right: 1px solid grey;
+  padding-right: 0;
+  padding-left: 0;
+}
+.chat-details {
+  padding-right: 0;
+  padding-left: 0;
+}
+.head {
+  background-color: #1781c5;
+  color: aliceblue;
+  height: 7vh;
+  padding-bottom: 4px;
+  border-bottom: 1px solid blue;
+}
+.message {
+  max-width: 60%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.message img {
+  width: 50px;
+  height: 50px;
+  margin: 4px;
+}
+.message-sent {
+  margin-left: 40%;
+}
+.chat {
+  padding: 7px;
+  height: 93vh;
+}
+.rooms-list {
+  height: 93vh;
+}
+#messages-list {
+  width: 100%;
+  padding: 7px;
+  height: 86vh;
+  max-width: 100%;
+  overflow-y: scroll;
+  position: relative;
+}
+.hide {
+  display: none;
+}
+#message-input-group {
+  position: absolute;
+  bottom: 0;
+}
+.btns {
+  padding: 15px;
+}
