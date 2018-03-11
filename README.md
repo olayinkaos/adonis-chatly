@@ -1,6 +1,6 @@
 # Chatly
 
-Simple AdonisJS chat app, built with the magic of Pusher Chatkit]()
+Simple AdonisJS chat app, built with the magic of [Pusher Chatkit](https://pusher.com/chatkit)
 
 ## To get started locally
 1. Clone repo - `git clone git@github.com:olayinkaos/adonis-chatly.git`
